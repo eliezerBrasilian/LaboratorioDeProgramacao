@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.main-content {
+  min-height: 100vh;
+  background-color: #dd9296;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+header {
+  height: 80px;
+  background-color: #22031f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header > p {
+  color: #fff;
+  font-size: 40px;
+}
+
+.form-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.insira-o-numero {
+  font-size: 19px;
+}
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.number-input {
+  height: 34px;
+  width: 75px;
+  background-color: #d9d9d9;
+  border-color: transparent;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.btns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: center;
+  width: 40%;
+}
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #cc76a1;
+  border-color: transparent;
+  border-width: 1px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
