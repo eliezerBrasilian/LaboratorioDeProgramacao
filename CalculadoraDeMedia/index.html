@@ -10,10 +10,13 @@
     <form post="index.php" id="form" class="form">
         <label>Insira o número: </label>
         <div  id="inputs" class="inputs">
-            <input type="number" id="number-input" class="input-input" value="0" >
+            
+            <input type="number" id="number-input" class="number-input" value="0" placeholder="digite um numero" required >
         </div>
        
-        <input type="submit" id="submit-btn" class="submit-btn" value="Adicionar mais um número" >
+        <div id="btns" class="btns">
+            <input type="button" id="btn-add" class="btn" value="Adicionar mais um número" >
+        </div>
     </form>
 
     <script src="./index.js"></script>

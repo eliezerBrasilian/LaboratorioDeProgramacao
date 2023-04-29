@@ -1,24 +1,48 @@
-//const numberInput = document.getElementById('number-input');
+var podeCalcularMedia = true;
+var numeros = []
 
-//acessando todos os inputs
-//const numbersInput = document.querySelectorAll('#number-input')
+const btnAdd = document.getElementById('btn-add');
+btnAdd.addEventListener('click',function(ev){
 
-
-//console.log(numbersInput);
-
-const form = document.getElementById('form');
-form.addEventListener('submit',function(ev){
-    ev.preventDefault()
-    
-    //definindo o no pai
 const inputs = document.getElementById('inputs');
-
-//crio o filho
 const newInput = document.createElement('input');
-//seeto os atributos
+
 newInput.id = "number-input"
 newInput.className = "number-input"
 newInput.value= "0"
-//coloco o filho dentro do no pai
+newInput.placeholder= "digite um numero"
+newInput.type = "number"
 inputs.appendChild(newInput)
+
+console.log(newInput.value)
+numeros.push(Number(newInput.value));
+
+if(podeCalcularMedia) exibirButtonCalcularMedia()
 })
+
+const btnSubmit = document.getElementById('form');
+btnSubmit.addEventListener('submit',function(ev){
+   
+    ev.preventDefault();
+
+    const ni = document.querySelectorAll('#number-input')
+    
+     for(let i = 0; i < ni.length; i++){
+        let htmlElemento = ni[i]
+        let valor = htmlElemento.value
+        console.log(valor)
+        numeros.push(valor);
+     }
+})
+
+function exibirButtonCalcularMedia(){
+    podeCalcularMedia = false;
+
+    const inputs = document.getElementById('btns');
+    const newBtn = document.createElement('input')
+    newBtn.type='submit'
+    newBtn.id="btn-submit"
+    newBtn.className = "btn"
+    newBtn.value="Calcular média"
+    inputs.appendChild(newBtn)
+}
