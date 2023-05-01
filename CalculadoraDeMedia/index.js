@@ -21,7 +21,7 @@ btnAdd.addEventListener("click", function (ev) {
 
 const btnSubmit = document.getElementById("form");
 btnSubmit.addEventListener("submit", function (ev) {
-  ev.preventDefault();
+  // ev.preventDefault();
   const ni = document.querySelectorAll("#number-input");
 
   for (let i = 0; i < ni.length; i++) {
@@ -42,5 +42,6 @@ function exibirButtonCalcularMedia() {
   newBtn.className = "btn";
   newBtn.style = "background-color: aliceblue";
   newBtn.value = "Calcular média";
+  newBtn.required;
   inputs.appendChild(newBtn);
 }
