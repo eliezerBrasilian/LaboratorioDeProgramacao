@@ -8,23 +8,34 @@
   </head>
   <body>
     <div>
-      <form>
+      <form action="process.php" method="post">
         <label>Id: </label>
-        <input type="number" />
+        <input type="number" id="id" name="id" />
+
         <label>Nome: </label>
-        <input type="text" />
+        <input type="text" id="nome" name="nome" />
+
         <label>Telefone: </label>
-        <input type="number" />
+        <input type="number" id="telefone" name="telefone" />
+
         <label>Email: </label>
-        <input type="email" />
+        <input type="email" id="email" name="email" />
+
         <label>Endereco: </label>
-        <input type="text" />
+        <input type="text" id="endereco" name="endereco" />
+
+        <label>Cidade: </label>
+        <input type="text" id="cidade" name="cidade" />
+
         <label>Bairro: </label>
-        <input type="text" />
+        <input type="text" id="bairro" name="bairro" />
+
         <label>Rua: </label>
-        <input type="text" />
+        <input type="text" id="rua" name="rua" />
+
         <label>Numero: </label>
-        <input type="number" />
+        <input type="number" id="numero" name="numero" />
+        <input type="submit" value="Enviar para o banco de dados" />
       </form>
     </div>
   </body>
