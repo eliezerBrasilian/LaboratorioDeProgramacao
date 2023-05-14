@@ -1,3 +1,13 @@
+<?php
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "pratica7db";
+$port = 3306;
+ $conn = new PDO("mysql:host=$host;port=$port;dbname=" . $dbname,$user,$password);
+  $result = $conn->query("select * from tb_aluno") -> fetchAll()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +39,13 @@
             <input type="submit" value="Enviar para o banco de dados" />
         </form>
     </div>
+    <ul>
+        <?php foreach($result as $item): ?>
+        <li><?=$item["nome"]?></li>
+        <?php endforeach; ?>
+    </ul>
 </body>
+
 
 </html>
 
