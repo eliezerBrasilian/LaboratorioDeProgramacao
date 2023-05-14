@@ -13,7 +13,11 @@ $dbname = "pratica7db";
 $inicio = ($pagina * $limite) - $limite;
 $port = 3306;
  $conn = new PDO("mysql:host=$host;port=$port;dbname=" . $dbname,$user,$password);
-  $result = $conn->query("select * from tb_aluno order by nome limit $inicio,$limite") -> fetchAll();
+  $result = $conn->query("select a.nome, a.telefone, a.id, a.email,e.cidade, e.bairro,e.numero
+   from tb_aluno as a
+   inner join tb_endereco as e
+   on a.id_endereco = e.id
+   order by a.nome limit $inicio,$limite") -> fetchAll();
 
 $registros = $conn->query("select count(nome) count from tb_aluno")-> fetch()["count"];
 
@@ -31,32 +35,18 @@ $paginas = ceil($registros / $limite);
 </head>
 
 <body>
-    <div>
-        <form action="process.php" method="post">
-            <label>Nome: </label>
-            <input type="text" id="nome" name="nome" />
-            <label>Telefone: </label>
-            <input type="number" id="telefone" name="telefone" />
-            <label>Email: </label>
-            <input type="email" id="email" name="email" />
 
-            <br>
-            <label for="pet-select">Selecione o endereco:</label>
-            <select name="endereco_ids" id="endereco-select">
-                <option value="" disabled selected>--Selecione uma opção--</option>
-                <option value="1">1 - Belo Horizonte</option>
-                <option value="2">2 - São Paulo</option>
-                <option value="3">3 - Rio de Janeiro</option>
-            </select>
-            <input type="submit" value="Enviar para o banco de dados" />
-        </form>
-    </div>
+
     <ul>
         <?php foreach($result as $item): ?>
-        <li><?=$item["id"]?> - <?=$item["nome"]?></li>
-
+        <li><?=$item["id"]?></li>
+        <li><?=$item["nome"]?></li>
+        <li><?=$item["cidade"]?></li>
+        <li><?=$item["bairro"]?></li>
+        <li><?=$item["numero"]?></li>
+        <hr>
         <?php endforeach; ?>
-        <a href="./view.php">Exibir dados</a>
+        <a href="./index.php">Inserir mais dados</a>
     </ul>
 
 
