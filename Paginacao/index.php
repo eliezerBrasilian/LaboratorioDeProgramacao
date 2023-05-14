@@ -21,9 +21,10 @@ $paginas = ceil($registros / $limite);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
+    <link rel="stylesheet" href="./styles/index.css">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,45 +32,42 @@ $paginas = ceil($registros / $limite);
 </head>
 
 <body>
-    <div>
-        <form action="process.php" method="post">
-            <label>Nome: </label>
-            <input type="text" id="nome" name="nome" />
-            <label>Telefone: </label>
-            <input type="number" id="telefone" name="telefone" />
-            <label>Email: </label>
-            <input type="email" id="email" name="email" />
+    <div class="main-content">
+        <header>
+            <p>CADASTRO DE ALUNOS</p>
 
+        </header>
+        <div class="form">
+            <form action="process.php" method="post">
+                <label>Nome: </label>
+                <input type="text" id="nome" name="nome" required />
+                <label>Telefone: </label>
+                <input type="number" id="telefone" name="telefone" required />
+                <label>Email: </label>
+                <input type="email" id="email" name="email" required />
+
+                <h1>Endereço</h1>
+                <label>Cidade: </label>
+                <input type="text" id="cidade" name="cidade" required />
+                <label>Bairro: </label>
+                <input type="text" id="bairro" name="bairro" required />
+                <label>Rua: </label>
+                <input type="text" id="rua" name="rua" required />
+                <label>Número: </label>
+                <input type="number" id="numero" name="numero" required />
+
+                <input type="submit" value="Enviar para o banco de dados" />
+            </form>
+        </div>
+        <ul class="listagem">
+            <?php foreach($result as $item): ?>
+            <li style="margin-right: 10px;"><?=$item["id"]?> - <?=$item["nome"]?>,</li>
+            <?php endforeach; ?>
             <br>
-            <label for="pet-select">Selecione o endereco:</label>
-            <select name="endereco_ids" id="endereco-select">
-                <option value="" disabled selected>--Selecione uma opção--</option>
-                <option value="1">1 - Belo Horizonte</option>
-                <option value="2">2 - São Paulo</option>
-                <option value="3">3 - Rio de Janeiro</option>
-            </select>
-            <input type="submit" value="Enviar para o banco de dados" />
-        </form>
+            <a href="./view.php">Exibir dados</a>
+        </ul>
+
     </div>
-    <ul>
-        <?php foreach($result as $item): ?>
-        <li><?=$item["id"]?> - <?=$item["nome"]?></li>
-
-        <?php endforeach; ?>
-        <a href="./view.php">Exibir dados</a>
-    </ul>
-
-
-    <a href="?pagina=1">Primeira</a>
-    <?php if($pagina>1):?>
-    <a href="?pagina=<?=$pagina-1?>">
-        <?php endif;?>
-        << </a>
-            <?=$pagina?>
-            <?php if($pagina<$paginas):?>
-            <a href="?pagina=<?=$pagina+1?>">>></a>
-            <?php endif;?>
-            <a href="?pagina=<?=$paginas?>">Último</a>
 
 </body>
 

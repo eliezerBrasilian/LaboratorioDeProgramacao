@@ -16,53 +16,45 @@ try{
 $nome =  $_POST['nome'];
 $telefone =  $_POST['telefone'];
 $email =  $_POST['email'];
-$id_endereco;
-
-
-if(!empty($_POST['endereco_ids'])) {
-    $selected = $_POST['endereco_ids'];
-    
-    $id_endereco = $selected;
-    echo 'You have chosen: ' . $id_endereco;
-} else {
-    echo 'Please select the value.';
-}
-
-//tb aluno
-/*id	id_endereco	nome	telefone	email	*/
-
-//inserindo os dados acima na tabela
 
 $pdo = new PDO("mysql:host=$host;port=$port;dbname=" . $dbname,$user,$password);
     $stmt = $pdo->prepare('INSERT INTO tb_aluno 
-    (id_endereco, nome, telefone, email) 
+    (nome, telefone, email) 
     VALUES
-    (:id_endereco, :nome, :telefone, :email)');
+    (:nome, :telefone, :email)');
 
-    $stmt->bindValue(':id_endereco', $id_endereco);
     $stmt->bindValue(':nome', $nome);
     $stmt->bindValue(':telefone', $telefone);
     $stmt->bindValue(':email', $email);
     $stmt->execute();
     if ($stmt->rowCount() >= 1) {
-        echo json_encode('Insercao feita com Sucesso');
+        echo ('Insercao feita com Sucesso');
     } else {
-        echo json_encode('Falha ao inserir');
+        echo ('Falha ao inserir');
     }
 
- header("Location: index.php");
- exit();
 
-//echo $nome . " " .$endereco;
 
-/*
-ID - Identificação auto incremento
-Nome - Nome do aluno
-Telefone - Apenas números
-Email - email do aluno, com validação do formato em Javascript.
-Endereco - Chave estrangeira para outra tabela contendo:
-Cidade
-Bairro
-Rua
-Numero
-*/
+ $cidade =  $_POST['cidade'];
+ $bairro =  $_POST['bairro'];
+ $rua =  $_POST['rua'];
+ $numero =  $_POST['numero'];
+
+ $stmt2 = $pdo->prepare('INSERT INTO tb_endereco 
+    (cidade, bairro, rua, numero) 
+    VALUES
+    (:cidade, :bairro, :rua, :numero)');
+
+    $stmt2->bindValue(':cidade', $cidade);
+    $stmt2->bindValue(':bairro', $bairro);
+    $stmt2->bindValue(':rua', $rua);
+    $stmt2->bindValue(':numero', $numero);
+    $stmt2->execute();
+    if ($stmt2->rowCount() >= 1) {
+        echo ('Insercao feita com Sucesso');
+    } else {
+        echo ('Falha ao inserir');
+    }
+
+    header("Location: index.php");
+    exit();
