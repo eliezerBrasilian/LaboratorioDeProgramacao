@@ -1,11 +1,23 @@
 <?php
+$pagina = 1;
+
+if(isset($_GET['pagina'])) $pagina = filter_input(INPUT_GET,"pagina",FILTER_VALIDATE_INT);
+if(!$pagina)$pagina = 1;
+$limite = 4;
+
 $host = "localhost";
 $user = "root";
 $password = "";
 $dbname = "pratica7db";
+
+$inicio = ($pagina * $limite) - $limite;
 $port = 3306;
  $conn = new PDO("mysql:host=$host;port=$port;dbname=" . $dbname,$user,$password);
-  $result = $conn->query("select * from tb_aluno") -> fetchAll()
+  $result = $conn->query("select * from tb_aluno order by nome limit $inicio,$limite") -> fetchAll();
+
+$registros = $conn->query("select count(nome) count from tb_aluno")-> fetch()["count"];
+
+$paginas = ceil($registros / $limite);
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +56,19 @@ $port = 3306;
         <li><?=$item["nome"]?></li>
         <?php endforeach; ?>
     </ul>
+
+
+    <a href="?pagina=1">Primeira</a>
+    <?php if($pagina>1):?>
+    <a href="?pagina=<?=$pagina-1?>">
+        <?php endif;?>
+        << </a>
+            <?=$pagina?>
+            <?php if($pagina<$paginas):?>
+            <a href="?pagina=<?=$pagina+1?>">>></a>
+            <?php endif;?>
+            <a href="?pagina=<?=$paginas?>">Último</a>
+
 </body>
 
 
