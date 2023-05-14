@@ -50,7 +50,8 @@ $pdo = new PDO("mysql:host=$host;port=$port;dbname=" . $dbname,$user,$password);
         echo json_encode('Falha ao inserir');
     }
 
- 
+ header("Location: index.php");
+ exit();
 
 //echo $nome . " " .$endereco;
 
