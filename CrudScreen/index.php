@@ -1,6 +1,8 @@
 <?php
-include_once "conexao.php";
-?>
+    require './conexao.php';
+    $connection = new Database("localhost","root","","lab_programacaodb",3306);
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
