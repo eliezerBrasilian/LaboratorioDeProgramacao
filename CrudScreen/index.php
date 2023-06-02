@@ -1,6 +1,7 @@
 <?php
     require './conexao.php';
-    $connection = new Database("localhost","root","","lab_programacaodb",3306);
+    $connection = new Database();
+    $connection->setConnection("localhost","root","","lab_programacaodb",3306); // OK
     ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
         <h3 class="title" style="font-size: 28px; color: black">
             Cadastrar produto
         </h3>
-        <form action="conexao.php" method="post">
+        <form action="insert.php" method="post">
             <h1 class="label">Nome do produto</h1>
             <input type="text" placeholder="digite o nome do produto..." class="form-control" name="product_name"
                 id="product_name" />

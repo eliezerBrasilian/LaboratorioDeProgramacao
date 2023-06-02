@@ -6,7 +6,7 @@ class Database {
   private $db;
   private $port;
 
-  function __construct($host,$user,$password,$db,$port) {
+  function setConnection($host,$user,$password,$db,$port){
     $this->host = $host;
     $this->user = $user;
     $this->password = $password;
@@ -17,10 +17,26 @@ class Database {
       $conn = new PDO("mysql:host=$host;dbname=$db", $user, $password);
       // set the PDO error mode to exception
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      echo "Connected successfully";
+      //echo "Connected successfully";
     } catch(PDOException $e) {
       echo "Connection failed: " . $e->getMessage();
     }
+
+  }
+  function getHost(){
+    return $this->host;
+  }
+  function getUser(){
+    return $this->user;
+  }
+  function getPassword(){
+    return $this->password;
+  }
+  function getDB(){
+    return $this->db;
+  }
+  function getPort(){
+    return $this->port;
   }
 }
 ?>
