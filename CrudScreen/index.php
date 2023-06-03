@@ -45,18 +45,23 @@
 
         <div class="card" id="card-bg" style="margin:10px">
             <div class="card-header">
-                <h4 class="product-title" id="card-product-title"><?=$reg["nome"] ?></h4>
-                <input class="form-control" id="card-product-title-input" type="text" value="Arroz" hidden />
+                <h4 class="product-title" id="card-product-title-<?=$reg['id']?>"><?=$reg["nome"] ?></h4>
+                <input class="form-control" id="card-product-title-input-<?=$reg['id']?>" type="hidden"
+                    value="<?=$reg["nome"]?>" />
             </div>
-            <div class="body">
-                <p class="product-title" id="card-product-price"><?=$reg["preco"]?></p>
-                <input class="form-control" id="card-product-title-input" type="number" value="20" hidden />
+            <div class=" body">
+                <p class="product-title" id="card-product-price-<?=$reg['id']?>">Preço: R$ <?=$reg["preco"]?></p>
+                <input class="form-control" id="card-product-price-input-<?=$reg["id"]?>" type="hidden"
+                    value="<?=$reg["preco"]?>" />
             </div>
             <form class="footer" id="card-btns" method="post" action="delete.php" id="form-card">
                 <?php
                 $id = $reg['id'];
                 ?>
-                <button class="btn-edit">editar</button>
+                <button class="btn-edit" id="btn-edit-<?=$id?>" type="click" onclick="editar(<?=$id?>)"
+                    form="form-card">editar</button>
+                <input type="hidden" class="btn-edit" id="btn-confirm-edit-<?=$id?>" onclick="confirmarEdit(<?=$id?>)"
+                    form="form-card" value="Salvar">
                 <button type="click" class="btn-delete" id="btn-delete" data-id="<?=$reg["id"] ?>"
                     onclick="excluir(<?=$id?>)" form="form-card">
                     <input class="btn-edit" type="hidden" id="id-oculto-<?=$id?>" name="<?=$reg["id"] ?>"
