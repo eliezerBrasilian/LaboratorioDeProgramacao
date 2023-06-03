@@ -1,9 +1,11 @@
 <?php
     require './database.php';
     require './conexao.php';
+    require './select.php';
     $connection = new Database();
     $connection->setConnection($host,$user,$password,$db_name,$port); // OK
     ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,22 +38,33 @@
             <br />
             <button class="btn btn-primary" id="btn-salvar">Salvar</button>
         </form>
+
     </div>
 
-    <div class="card" id="card-bg">
-        <div class="card-header">
-            <h4 class="product-title" id="card-product-title">Arroz</h4>
-            <input class="form-control" id="card-product-title-input" type="text" value="Arroz" hidden />
-        </div>
-        <div class="body">
-            <p class="product-title" id="card-product-price">R$ 20,00</p>
-            <input class="form-control" id="card-product-title-input" type="number" value="20" hidden />
-        </div>
-        <div class="footer" id="card-btns">
-            <button class="btn-edit">editar</button>
-            <button class="btn-delete">excluir</button>
+    <div id="cards-container">
+        <?php while($reg = $query->fetch_array()) { ?>
+
+        <div class="card" id="card-bg" style="margin:10px">
+            <div class="card-header">
+                <h4 class="product-title" id="card-product-title"><?=$reg["nome"] ?></h4>
+                <input class="form-control" id="card-product-title-input" type="text" value="Arroz" hidden />
+            </div>
+            <div class="body">
+                <p class="product-title" id="card-product-price"><?=$reg["preco"]?></p>
+                <input class="form-control" id="card-product-title-input" type="number" value="20" hidden />
+            </div>
+            <div class="footer" id="card-btns">
+                <button class="btn-edit">editar</button>
+                <button class="btn-delete">excluir</button>
+            </div>
+
         </div>
     </div>
+
+
+    <?php }?>
+
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>

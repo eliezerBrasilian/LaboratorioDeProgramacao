@@ -36,3 +36,9 @@ body {
   background-color: #ce3e3e;
   color: #fff;
 }
+
+#cards-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
