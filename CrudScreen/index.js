@@ -1,12 +1,9 @@
 function confirmarEdit(id) {
   let url = 'edit.php';
-  console.log('dentro');
 
   inputTitle = document.getElementById(`card-product-title-input-${id}`);
   inputPrice = document.getElementById(`card-product-price-input-${id}`);
 
-  // priceNumber = Number(inputPrice);
-  // console.log(typeof priceNumber);
   $.post(
     url,
     {
@@ -17,7 +14,7 @@ function confirmarEdit(id) {
     },
     (response) => {
       console.log(response);
-      window.location.reload();
+      alert('ok');
     }
   );
 }
@@ -55,4 +52,26 @@ function excluir(id) {
       window.location.reload();
     }
   );
+}
+
+function adicionar() {
+  console.log('aqui');
+  let url = 'insert.php';
+
+  let nomeInput = document.getElementById('product_name').value;
+  let precoInput = document.getElementById('product_price').value;
+
+  if (nomeInput.trim() !== '' && precoInput.trim() !== '') {
+    $.post(
+      url,
+      {
+        nome: String(nomeInput),
+        preco: Number(precoInput),
+      },
+      (response) => {
+        console.log(response);
+        window.location.reload();
+      }
+    );
+  }
 }

@@ -27,7 +27,7 @@
         <h3 class="title" style="font-size: 28px; color: black">
             Cadastrar produto
         </h3>
-        <form action="insert.php" method="post">
+        <form id="main-form">
             <h1 class="label">Nome do produto</h1>
             <input type="text" placeholder="digite o nome do produto..." class="form-control" name="product_name"
                 id="product_name" />
@@ -35,7 +35,7 @@
             <h1 class="label">Preço do produto</h1>
             <input type="number" placeholder="R$" class="form-control" name="product_price" id="product_price" />
             <br />
-            <button class="btn btn-primary" id="btn-salvar">Salvar</button>
+            <button class="btn btn-primary" id="btn-salvar" onclick="adicionar()" form="main-form">Salvar</button>
         </form>
 
     </div>
