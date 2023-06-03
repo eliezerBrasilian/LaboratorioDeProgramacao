@@ -6,4 +6,6 @@ A tela deve conter um formulário no topo com os campos a serem inseridos e um c
 
 O botão inserir do formulário deverá ser alterado para atualizar, caso um registro seja escolhido para ser editado.
 
-![image](https://github.com/eliezerBrasilian/LaboratorioDeProgramacao/assets/93846923/5f98febc-9952-42af-888d-85264e841c8f)
+
+https://github.com/eliezerBrasilian/LaboratorioDeProgramacao/assets/93846923/1d4ab85b-b060-49c3-a97c-595fbdd01ba0
+
