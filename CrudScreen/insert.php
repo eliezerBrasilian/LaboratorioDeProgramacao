@@ -45,6 +45,10 @@ class Produto{
 
         if ($stmt->rowCount() >= 1) {
             echo json_encode('Produto inserido com Sucesso');
+            header('Location: index.php');
+            exit();
+// or die();
+            
         } else {
             echo json_encode('Falha ao salvar Produto');
         }
