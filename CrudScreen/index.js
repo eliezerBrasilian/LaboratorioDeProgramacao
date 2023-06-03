@@ -14,7 +14,7 @@ function confirmarEdit(id) {
     },
     (response) => {
       console.log(response);
-      alert('ok');
+      window.location.reload();
     }
   );
 }
