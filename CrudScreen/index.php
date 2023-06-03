@@ -45,6 +45,7 @@
         <?php while($reg = $query->fetch_array()) { ?>
 
         <div class="card" id="card-bg" style="margin:10px">
+
             <div class="card-header">
                 <h4 class="product-title" id="card-product-title"><?=$reg["nome"] ?></h4>
                 <input class="form-control" id="card-product-title-input" type="text" value="Arroz" hidden />
@@ -53,12 +54,20 @@
                 <p class="product-title" id="card-product-price"><?=$reg["preco"]?></p>
                 <input class="form-control" id="card-product-title-input" type="number" value="20" hidden />
             </div>
-            <div class="footer" id="card-btns">
+            <form class="footer" id="card-btns" method="post" action="delete.php" id="form-card">
+                <?php
+                $id = $reg['id'];
+                ?>
                 <button class="btn-edit">editar</button>
-                <button class="btn-delete">excluir</button>
-            </div>
+                <button type="click" class="btn-delete" id="btn-delete" data-id="<?=$reg["id"] ?>"
+                    onclick="excluir(<?=$id?>)" form="form-card">
+                    <input class="btn-edit" type="hidden" id="id-oculto-<?=$id?>" name="<?=$reg["id"] ?>"
+                        value="<?=$reg["id"] ?>">
+            </form> >excluir</button>
 
         </div>
+
+    </div>
     </div>
 
 
@@ -71,7 +80,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
-    <!-- <script src="./index.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script src="./index.js"></script>
 </body>
 
 </html>

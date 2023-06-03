@@ -1,35 +1,26 @@
-let btnSalvar = document.getElementById('btn-salvar');
-btnSalvar.addEventListener('click', (ev) => {
-  ev.preventDefault();
-  let productName = document.getElementById('product_name').value;
-  let productPrice = document.getElementById('product_price').value;
+function excluir(id) {
+  console.log('id - ' + id);
+  let idOculto = document.getElementById('id-oculto-' + id).value;
+  console.log('ID_oculto: ' + idOculto);
+  //alert(id);
 
-  var url = 'insert.php';
-  //alert(`${productPrice}`);
-
+  var url = 'delete.php';
   var req = new XMLHttpRequest();
-  req.onload = function () {
-    fetch(url).then((res) => {
-      console.log(res.status);
-    });
-  };
-  req.open('post', url, true);
-  req.send({ productName: productName, productPrice: productPrice });
 
-  //   var httpc = new XMLHttpRequest(); // simplified for clarity
+  //let btnValue = btn.value;
 
-  //   httpc.open('POST', url, true); // sending as POST
-
-  //   httpc.onreadystatechange = function () {
-  //     //Call a function when the state changes.
-  //     if (httpc.readyState == 4 && httpc.status == 200) {
-  //       // complete and no errors
-  //       //alert('ok'); // some processing here, or whatever you want to do with the response
-  //       fetchData();
-  //     }
-  //   };
-  //   httpc.send({ productName: productName, productPrice: productPrice });
-});
+  // jQuery Ajax Post Request
+  $.post(
+    url,
+    {
+      id: idOculto,
+    },
+    (response) => {
+      // response from PHP back-end
+      console.log(response);
+    }
+  );
+}
 
 function fetchData() {
   fetch('insert.php')
