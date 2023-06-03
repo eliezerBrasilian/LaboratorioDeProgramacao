@@ -1,7 +1,8 @@
 <?php
+    require './database.php';
     require './conexao.php';
     $connection = new Database();
-    $connection->setConnection("localhost","root","","lab_programacaodb",3306); // OK
+    $connection->setConnection($host,$user,$password,$db_name,$port); // OK
     ?>
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@
             <h1 class="label">Preço do produto</h1>
             <input type="number" placeholder="R$" class="form-control" name="product_price" id="product_price" />
             <br />
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button class="btn btn-primary" id="btn-salvar">Salvar</button>
         </form>
     </div>
 
@@ -57,6 +58,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
+    <!-- <script src="./index.js"></script> -->
 </body>
 
 </html>

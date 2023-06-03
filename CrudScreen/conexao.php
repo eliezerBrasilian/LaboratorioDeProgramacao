@@ -1,4 +1,5 @@
 <?php
+
 class Database {
   private $host;
   private $user;
@@ -22,21 +23,6 @@ class Database {
       echo "Connection failed: " . $e->getMessage();
     }
 
-  }
-  function getHost(){
-    return $this->host;
-  }
-  function getUser(){
-    return $this->user;
-  }
-  function getPassword(){
-    return $this->password;
-  }
-  function getDB(){
-    return $this->db;
-  }
-  function getPort(){
-    return $this->port;
   }
 }
 ?>
