@@ -6,7 +6,6 @@
     $connection->setConnection($host,$user,$password,$db_name,$port); // OK
     ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,11 +40,10 @@
 
     </div>
 
-    <div id="cards-container">
+    <div id="cards-container" style="display:flex;flex-direction:row;">
         <?php while($reg = $query->fetch_array()) { ?>
 
         <div class="card" id="card-bg" style="margin:10px">
-
             <div class="card-header">
                 <h4 class="product-title" id="card-product-title"><?=$reg["nome"] ?></h4>
                 <input class="form-control" id="card-product-title-input" type="text" value="Arroz" hidden />
@@ -64,14 +62,9 @@
                     <input class="btn-edit" type="hidden" id="id-oculto-<?=$id?>" name="<?=$reg["id"] ?>"
                         value="<?=$reg["id"] ?>">
             </form> >excluir</button>
-
         </div>
-
+        <?php }?>
     </div>
-    </div>
-
-
-    <?php }?>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
