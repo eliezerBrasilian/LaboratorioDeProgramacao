@@ -1,0 +1,45 @@
+.title {
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+}
+body {
+  background-color: #30343a;
+  padding: 2rem;
+}
+#container-bg {
+  background-color: #fff;
+  padding: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+.label {
+  font-size: 20px;
+}
+
+#card-bg {
+  padding: 1rem;
+}
+.product-title {
+  text-align: center;
+}
+#card-btns {
+  align-self: center;
+  display: flex;
+  column-gap: 10px;
+}
+.btn-edit {
+  background-color: #854982;
+  color: #fff;
+}
+.btn-delete {
+  background-color: #ce3e3e;
+  color: #fff;
+}
+
+#cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
