@@ -6,9 +6,10 @@ $(document).ready(function () {
     let email = $('#email').val();
     let password = $('#password').val();
     let url = '../../ponte/handleUser.php';
+    let opcao = 'cadastro';
     let created = 'Conta criada com sucesso';
 
-    let userData = { nome, email, password };
+    let userData = { nome, email, password, opcao };
     console.log(nome);
     if (nome !== '' && email !== '' && password !== '')
       $.ajax({
