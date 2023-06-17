@@ -22,10 +22,10 @@
                 <div class="form">
                     <form id="form">
                         <label>Email</label><br />
-                        <input type="email" required id="email" value="teste@teste.com" />
+                        <input type="email" required id="email" placeholder="digite seu email" />
                         <br />
                         <label>Senha</label><br />
-                        <input type="password" required id="password" value="12345" />
+                        <input type="password" required id="password" placeholder="digite sua senha" />
                         <br />
                         <button type="submit">Acessar</button>
                         <a href="./pages/Cadastro/index.php">

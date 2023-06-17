@@ -1,11 +1,12 @@
 <?php 
-error_reporting();
 require('../Database/connection.php');
 class User{
     private $name;
     private $email;
     private $password;
     private $conn;
+    private $tipo_usuario;
+    private $id;
 
     function __construct($name,$email,$password)
     {
@@ -60,18 +61,20 @@ class User{
     
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $name = $row['nome'];
-            $id = $row['id'];
+            $this->name = $row['nome'];
+            $this->id = $row['id'];
             $email_da_consulta = $row['email'];
             $password_da_consulta = $row['senha'];
+            $this->tipo_usuario = $row['tipo_usuario'];
     
             if ($email_da_consulta == $email && $password_da_consulta == $password) {
                 //echo "Usuário válido: ";
                
                 $objeto = new stdClass();
-                $objeto->name = $name;
-                $objeto->id = $id;
-                $objeto->email = $email;
+                $objeto->name = $this->name;
+                $objeto->id = $this->id;
+                $objeto->email = $this->email;
+                $objeto->tipo_usuario = $this->tipo_usuario;
 
                 $json = json_encode($objeto);
 

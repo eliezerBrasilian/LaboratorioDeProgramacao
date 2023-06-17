@@ -25,12 +25,12 @@ require ('../../Database/connection.php')
                 <div class="form">
                     <form id="form" method="post">
                         <label>Nome</label><br />
-                        <input type="text" id="name" value="joaquim" />
+                        <input type="text" id="name" placeholder="digite seu nome" />
                         <label>Email</label><br />
-                        <input type="email" id="email" value="teste@teste.com" />
+                        <input type="email" id="email" placeholder="digite seu email" />
                         <br />
                         <label>Senha</label><br />
-                        <input type="password" id="password" value="12345" />
+                        <input type="password" id="password" placeholder="crie uma senha" />
                         <br />
                         <button id="btn">Cadastrar</button>
                         <a href="../../index.php">
