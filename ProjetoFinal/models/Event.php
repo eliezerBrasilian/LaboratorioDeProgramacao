@@ -36,6 +36,38 @@ class Event{
         global $conn;
         $this->conn = $conn;
     }
+    function getEvent($id){
+        $db_name = "lab_programacaodb";
+        $host = "localhost";
+        $user = "root";
+        $password = "";
+        $port = 3306;
+
+        // Criar a conexão
+        $conn = new mysqli($host, $user, $password, $db_name);
+          // Verificar a conexão
+          if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
+        }
+       
+        // Ajuste da consulta SQL para filtrar pelo ID
+        $query = "SELECT e.id, e.titulo, e.descricao, e.data, e.hora, e.local, e.preco, e.imagem, c.nome
+        FROM events AS e
+        INNER JOIN categories AS c ON e.categoria_id = c.id
+        WHERE e.id = $id"; // Ajuste para filtrar pelo ID desejado
+
+        $result = $conn->query($query);
+
+        // Verificar se a consulta retornou resultados
+        if ($result->num_rows > 0) {
+        // Obter o registro correspondente ao ID
+        $event = $result->fetch_assoc();
+        return $event;
+        } else {
+        return null; // ID não encontrado, retorna null ou faça algo apropriado
+        }
+
+    }
     function getEvents(){
         // global $conn;
         $db_name = "lab_programacaodb";

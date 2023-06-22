@@ -1,16 +1,21 @@
-<?php 
-require '../../models/Event.php';
-$event = new Event();
-$events = $event->getEvents();
+<?php
+require('../../models/Event.php');
+
+$id=  $_GET['id'];
+
+
+$ev = new Event();
+$event = $ev->getEvent($id);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./style.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feed</title>
+    <link rel="stylesheet" href="../Home/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
 <body>
@@ -23,8 +28,8 @@ $events = $event->getEvents();
             </search>
         </header>
         <section>
-            <p class="title">Eventos em destaque</p>
-            <?php foreach ($events as $event) { ?>
+            <p class="title">Evento escolhido</p>
+
             <div class="content">
                 <p class="event-title"><?php echo $event['titulo'] ?></p>
                 <img src=<?php echo $event['imagem'] ?> />
@@ -39,14 +44,12 @@ $events = $event->getEvents();
                         mais</button>
                 </footer>
             </div>
-            <?php }?>
+
         </section>
 
     </main-content>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="./index.js"></script>
-
 </body>
 
 </html>
