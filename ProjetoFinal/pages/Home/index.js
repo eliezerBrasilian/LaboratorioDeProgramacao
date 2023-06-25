@@ -7,23 +7,22 @@ function isUserValid() {
   if (id === null) {
     window.location.href = '../../index.php';
   } else {
-    console.log('Name: ' + tipoUsuario);
+    console.log('tipo de usuario: ' + tipoUsuario);
   }
 }
 isUserValid();
 
-// $('button').click(() => {
-//   alert('clicked');
-// });
-async function showMore(id) {
+function showMore(id) {
   localStorage.setItem('id_evento_atual', JSON.stringify(id));
-  await $.ajax({
+  let usuario_id = localStorage.getItem('id');
+  $.ajax({
     method: 'POST',
-    url: '../Subscribe/index.php',
+    url: '../EventChoosen/index.php',
     data: { id: parseInt(id) },
     success: function (response) {
       // Manipule a resposta do servidor aqui
-      window.location.href = '../Subscribe/index.php?id=' + id;
+      window.location.href =
+        '../EventChoosen/index.php?id=' + id + '&user=' + usuario_id;
     },
     error: function () {
       // Lida com o erro da solicitação AJAX aqui
@@ -31,10 +30,3 @@ async function showMore(id) {
     },
   });
 }
-// $(document).ready(function () {
-//   $('#btn-show-more').click(function (event) {
-//     //alert('clicked');
-//     var dataValue = $(this).data('btn-id');
-//     alert('Valor do atributo data: ' + dataValue);
-//   });
-// });

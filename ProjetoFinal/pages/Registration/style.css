@@ -1,0 +1,8 @@
+.register-info-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+right > .pagamento {
+  font-size: 30px;
+}

@@ -1,8 +1,11 @@
 <?php
 require('../../models/Event.php');
-
+require '../../models/Registration.php';
 $id=  $_GET['id'];
+$usuario_id=  $_GET['user'];
 
+$register = new Registration();
+$reg = $register->getRegistrationInfo($usuario_id,$id);
 
 $ev = new Event();
 $event = $ev->getEvent($id);
@@ -12,7 +15,10 @@ $event = $ev->getEvent($id);
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../Home/style.css">
+    <link rel="stylesheet" href="./style.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -21,14 +27,11 @@ $event = $ev->getEvent($id);
 <body>
     <main-content>
         <header>
-            <p>Lista de eventos</p>
-            <search>
-                <img src="../../img/search_.png" alt="icone de pesquisar" />
-                <p>Pesquisar</p>
-            </search>
+            <p>Evento escolhido</p>
+
         </header>
         <section>
-            <p class="title">Evento escolhido</p>
+
 
             <div class="content">
                 <p class="event-title"><?php echo $event['titulo'] ?></p>
@@ -40,8 +43,14 @@ $event = $ev->getEvent($id);
                         <p><strong>preço dos ingressos:</strong> <?php echo $event['preco'] ?></p>
                         <p class="categoria">categoria: #<?php echo $event['nome'] ?></p>
                     </left>
-                    <button onclick="showMore(<?php echo $event['id'] ?>)">Ver
-                        mais</button>
+                    <div class="btns-container">
+                        <?php if($reg == null){ ?>
+                        <button onclick="subscribe(<?php echo $event['id'] ?>)">Inscrever-se</button>
+                        <?php } ?>
+
+                        <button onclick="reviews(<?php echo $event['id'] ?>)">Avaliações</button>
+                    </div>
+
                 </footer>
             </div>
 
@@ -49,6 +58,7 @@ $event = $ev->getEvent($id);
 
     </main-content>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./index.js"></script>
 </body>
 
