@@ -7,10 +7,9 @@ $events = $event->getEvents();
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="./style.css">
-
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed</title>
@@ -20,10 +19,6 @@ $events = $event->getEvents();
     <main-content>
         <header>
             <p>Lista de eventos</p>
-            <search>
-                <img src="../../img/search_.png" alt="icone de pesquisar" />
-                <p>Pesquisar</p>
-            </search>
         </header>
         <section>
             <p class="title">Eventos em destaque</p>

@@ -12,8 +12,8 @@ $reviews = $review->getReviews($evento_id);
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="../Home/style.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/style.css">
     <link rel="stylesheet" href="./style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,6 +45,7 @@ $reviews = $review->getReviews($evento_id);
         </section>
 
     </main-content>
+    <script src="./index.js"></script>
 </body>
 
 </html>

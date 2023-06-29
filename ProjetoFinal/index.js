@@ -1,11 +1,12 @@
 function isUserLogged() {
   if (
-    localStorage.getItem('name') !== null ||
-    localStorage.getItem('id') !== null ||
-    (localStorage.getItem('email') !== null &&
-      localStorage.getItem('id_usario') !== null)
+    localStorage.getItem('name') == null ||
+    localStorage.getItem('id') == null ||
+    localStorage.getItem('email') == null ||
+    localStorage.getItem('id_usario') == null
   ) {
-    console.log('pode ir para home');
+    window.location.href = './index.php';
+  } else {
     window.location.href = './pages/Home/index.php';
   }
 }
@@ -29,7 +30,6 @@ $(document).ready(function () {
         data: userData,
         dataType: 'json',
         success: function (response) {
-          alert(JSON.stringify(response));
           console.log(response);
           let { name, id, email, tipo_usuario } = response;
           localStorage.setItem('name', name);
@@ -38,10 +38,11 @@ $(document).ready(function () {
           localStorage.setItem('tipo_usuario', tipo_usuario);
           console.log('dados salvos');
           isUserLogged();
-          // console.log(response.name);
-          //localStorage.setItem('name', JSON.stringify(response.name));
         },
         error: function (xhr, status, error) {
+          alert(
+            'Houve alguma falha ao legar, verifique os dados e tente novamente'
+          );
           console.log(xhr.responseText);
         },
       });

@@ -35,9 +35,9 @@ function getRegistrationInfo($usuario_id,$evento_id){
     $this->usuario_id = $usuario_id;
     $this->evento_id = $evento_id;
 
-    // Criar a conexão
+   
     $conn = new mysqli($host, $user, $password, $db_name);
-      // Verificar a conexão
+      
       if ($conn->connect_error) {
         echo ("Falha na conexão: " . $conn->connect_error);
     }
@@ -63,9 +63,9 @@ function setRegistration($usuario_id,$evento_id,$status_pagamento){
 
     $this->usuario_id = $usuario_id;
 
-    // Criar a conexão
+   
     $conn = new mysqli($host, $user, $password, $db_name);
-      // Verificar a conexão
+     
       if ($conn->connect_error) {
         return "Falha na conexão: " . $conn->connect_error;
     }

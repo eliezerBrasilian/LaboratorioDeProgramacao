@@ -15,8 +15,8 @@ $event = $ev->getEvent($id);
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="../Home/style.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/style.css">
     <link rel="stylesheet" href="./style.css">
 
     <meta charset="UTF-8">
@@ -45,10 +45,10 @@ $event = $ev->getEvent($id);
                     </left>
                     <div class="btns-container">
                         <?php if($reg == null){ ?>
-                        <button onclick="subscribe(<?php echo $event['id'] ?>)">Inscrever-se</button>
+                        <reviewButton onclick="subscribe(<?php echo $event['id'] ?>)">Inscrever-se</reviewButton>
                         <?php } ?>
 
-                        <button onclick="reviews(<?php echo $event['id'] ?>)">Avaliações</button>
+                        <reviewButton onclick="reviews(<?php echo $event['id'] ?>)">Avaliações</reviewButton>
                     </div>
 
                 </footer>

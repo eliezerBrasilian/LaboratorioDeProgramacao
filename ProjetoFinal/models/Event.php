@@ -1,5 +1,4 @@
 <?php
-//require('../Database/connection.php');
 class Event{
     private $id;
     private $categoria_id;
@@ -10,7 +9,6 @@ class Event{
     private $local;
     private $preco;
     private $imagem;
-    private $conn;
     
     function setEvent(  
      $id,
@@ -33,8 +31,6 @@ class Event{
         $this->local;
         $this->preco;
         $this->imagem;
-        global $conn;
-        $this->conn = $conn;
     }
 
     function getEvent($id){
@@ -44,41 +40,35 @@ class Event{
         $password = "";
 
         $conn = new mysqli($host, $user, $password, $db_name);
-          // Verificar a conexão
           if ($conn->connect_error) {
             die("Falha na conexão: " . $conn->connect_error);
         }
        
-        // Ajuste da consulta SQL para filtrar pelo ID
         $query = "SELECT e.id, e.titulo, e.descricao, e.data, e.hora, e.local, e.preco, e.imagem, c.nome
         FROM events AS e
         INNER JOIN categories AS c ON e.categoria_id = c.id
-        WHERE e.id = $id"; // Ajuste para filtrar pelo ID desejado
+        WHERE e.id = $id"; 
 
         $result = $conn->query($query);
 
-        // Verificar se a consulta retornou resultados
+      
         if ($result->num_rows > 0) {
-        // Obter o registro correspondente ao ID
+       
         $event = $result->fetch_assoc();
         return $event;
         } else {
-        return null; // ID não encontrado, retorna null ou faça algo apropriado
+        return null; 
         }
-
     }
     function getEvents(){
-        // global $conn;
         $db_name = "lab_programacaodb";
         $host = "localhost";
         $user = "root";
         $password = "";
         $port = 3306;
 
-        // Criar a conexão
         $conn = new mysqli($host, $user, $password, $db_name);
 
-        // Verificar a conexão
         if ($conn->connect_error) {
             die("Falha na conexão: " . $conn->connect_error);
         }
